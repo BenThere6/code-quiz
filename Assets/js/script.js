@@ -94,13 +94,19 @@ backBtn.addEventListener('click',function() {
 
 clearScoresBtn.addEventListener('click',function() {
     localStorage.removeItem("scores");
+    scoresListEl.innerHTML = '';
+});
+
+viewScores.addEventListener('click',function() {
+    renderScoreList();
 });
 
 $('#save_score').submit(function(e){
-    initials = document.querySelector('#initials').value;
+    initials = document.querySelector('#initials').value.toUpperCase();
     document.getElementById('initials').value = "";
     e.preventDefault();
     saveScore();
+    renderScoreList();
 });
 
 function renderQuestionAndOptions() {
@@ -159,5 +165,14 @@ function saveScore() {
 }
 
 function renderScoreList() {
-    
+    scoresListEl.innerHTML = '';
+    scoresList = JSON.parse(localStorage.getItem("scores"));
+    // console.log("render scores");
+    // console.log(scoresList);
+    for (i=0;i<scoresList.length;i++) {
+        splitScoreItem = scoresList[i].split(',');
+        initials = splitScoreItem[0];
+        points = splitScoreItem[1];
+        $('#scores_list').append('<li>' + initials + ' - ' + points + '<li>');
+    }
 }
