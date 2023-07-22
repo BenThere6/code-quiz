@@ -89,12 +89,18 @@ backBtn.addEventListener('click',function() {
     points = 0;
     renderQuestionAndOptions();
     renderScore();
-    timerUpdate();
+    // timerUpdate();
+});
+
+clearScoresBtn.addEventListener('click',function() {
+    localStorage.removeItem("scores");
 });
 
 $('#save_score').submit(function(e){
+    initials = document.querySelector('#initials').value;
+    document.getElementById('initials').value = "";
     e.preventDefault();
-    console.log("submitted"); 
+    saveScore();
 });
 
 function renderQuestionAndOptions() {
@@ -123,8 +129,9 @@ function checkQuizComplete() {
 function timerUpdate() {
     // var timeLeft = 10;
     var timerInterval = setInterval(function() {
-        timeLeft--;
+        
         timerCount.textContent = timeLeft;
+        timeLeft--;
     
         if(timeLeft < 1) {
             timerCount.textContent = "";
@@ -133,4 +140,24 @@ function timerUpdate() {
         }
     
     }, 1000);
+}
+
+function saveScore() {
+    // $('#scores_list').append('<li>' + initials + ' - ' + points + '<li>');
+
+    currentScore = [initials + ',' + points];
+    // console.log(currentScore);
+
+    const scores = (localStorage.getItem('scores') !== null);
+    if (!scores) {
+        localStorage.setItem("scores", JSON.stringify(currentScore));
+    } else {
+        scoresList = JSON.parse(localStorage.getItem("scores"));
+        scoresList.push(currentScore[0]);
+        localStorage.setItem("scores", JSON.stringify(scoresList));
+    }
+}
+
+function renderScoreList() {
+    
 }
