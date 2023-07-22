@@ -25,10 +25,14 @@ var correctAnswers = ['alerts','parenthesis','all of the above','quotes','consol
 var questionNum = 0;
 var points = 0;
 var isQuizComplete = false;
+var timeLeft = 10;
 
 finalScoreEl.textContent = points;
 
 startQuizBtn.addEventListener('click',function() {
+    timeLeft = 10;
+    startQuizBtn.disabled = true;
+    timerUpdate();
     renderQuestionAndOptions();
 });
 
@@ -85,6 +89,12 @@ backBtn.addEventListener('click',function() {
     points = 0;
     renderQuestionAndOptions();
     renderScore();
+    timerUpdate();
+});
+
+$('#save_score').submit(function(e){
+    e.preventDefault();
+    console.log("submitted"); 
 });
 
 function renderQuestionAndOptions() {
@@ -95,6 +105,7 @@ function renderQuestionAndOptions() {
         optionThreeEl.textContent = optionsArray[questionNum][2];
         optionFourEl.textContent = optionsArray[questionNum][3];
     }
+    checkQuizComplete();
 }
 
 function renderScore() {
@@ -102,7 +113,24 @@ function renderScore() {
 }
 
 function checkQuizComplete() {
-    if (questionNum == 5) {
+    if (questionNum == 5 || timeLeft == 0) {
         isQuizComplete = true;
+        startQuizBtn.disabled = false;
+        timeLeft = 0;
     }
+}
+
+function timerUpdate() {
+    // var timeLeft = 10;
+    var timerInterval = setInterval(function() {
+        timeLeft--;
+        timerCount.textContent = timeLeft;
+    
+        if(timeLeft < 1) {
+            timerCount.textContent = "";
+            clearInterval(timerInterval);
+            checkQuizComplete();
+        }
+    
+    }, 1000);
 }
