@@ -31,6 +31,7 @@ var timeLeftMain = 60;
 finalScoreEl.textContent = points;
 timerCount.textContent = timeLeftMain;
 
+// When this button is clicked, start the timer and change to questions screen
 startQuizBtn.addEventListener('click',function() {
     timeLeft = timeLeftMain;
     isQuizComplete = false;
@@ -39,6 +40,7 @@ startQuizBtn.addEventListener('click',function() {
     showQuestionScreen();
 });
 
+// When any of the option buttons are clicked, render the new question and options
 optionOneBtn.addEventListener('click',function() {
     if (optionOneEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
@@ -91,6 +93,7 @@ optionFourBtn.addEventListener('click',function() {
     renderScore();
 });
 
+// When back button clicked, change to main screen
 backBtn.addEventListener('click',function() {
     questionNum = 0;
     points = 0;
@@ -100,11 +103,13 @@ backBtn.addEventListener('click',function() {
     showMainScreen();
 });
 
+// When clear scores button is clicked, remove the 'scores' key from local storage
 clearScoresBtn.addEventListener('click',function() {
     localStorage.removeItem("scores");
     scoresListEl.innerHTML = '';
 });
 
+// If view scores is clicked, show score screen unless there are no scores to display
 viewScores.addEventListener('click',function() {
     try {
         renderScoreList();
@@ -115,6 +120,7 @@ viewScores.addEventListener('click',function() {
     }
 });
 
+// When initials form is submitted, save initials and show score screen
 $('#save_score').submit(function(e){
     showScoresScreen();
     initials = document.querySelector('#initials').value.toUpperCase();
@@ -124,6 +130,7 @@ $('#save_score').submit(function(e){
     renderScoreList();
 });
 
+// Display question and options based on questionNum
 function renderQuestionAndOptions() {
     if (questionNum < 5) {
         questionEl.textContent = questionsArray[questionNum];
@@ -132,6 +139,7 @@ function renderQuestionAndOptions() {
         optionThreeEl.textContent = optionsArray[questionNum][2];
         optionFourEl.textContent = optionsArray[questionNum][3];
     }
+    // If timeLeft hasn't been defined yet, checkQuizComplete will get an error, but at that point it also wouldn't need to run. This skips it.
     try {
         checkQuizComplete();
     }
@@ -144,6 +152,7 @@ function renderScore() {
     finalScoreEl.textContent = points;
 }
 
+// If quiz is complete, show quiz end screen 
 function checkQuizComplete() {
     if (questionNum == 5 || timeLeft == 0) {
         isQuizComplete = true;
@@ -152,6 +161,7 @@ function checkQuizComplete() {
     }
 }
 
+// Make the timer countdown every second until it reaches 0
 function timerUpdate() {
     var timerInterval = setInterval(function() {
         timeLeft--;
@@ -164,6 +174,7 @@ function timerUpdate() {
     }, 1000);
 }
 
+// Save initials and points to local storage as JSON list
 function saveScore() {
     currentScore = [initials + ',' + points];
     const scores = (localStorage.getItem('scores') !== null);
@@ -176,6 +187,7 @@ function saveScore() {
     }
 }
 
+// Create list items for each score saved in local storage
 function renderScoreList() {
     scoresListEl.innerHTML = '';
     scoresList = JSON.parse(localStorage.getItem("scores"));
