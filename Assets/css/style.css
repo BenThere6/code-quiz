@@ -1,13 +1,12 @@
 :root {
     --purple: rgb(74, 52, 109);
+    --lightPurple: rgb(191, 173, 222);
 }
 
 .screens {
     margin-left: 25%;
     margin-right: 25%;
-    /* width:50%; */
     margin-top: 50px;
-    /* text-align: center; */
 }
 
 #main_screen {
@@ -30,4 +29,26 @@ header {
     justify-content: space-between;
     font-weight:bolder;
     color:var(--purple);
+}
+
+ul {
+    list-style-type: none;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+li {
+    padding: 3px 15px 3px 15px;
+}
+
+li:nth-child(odd) {
+    background-color: var(--lightPurple);
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+    .screens {
+        margin-left:3%;
+        margin-right:3%;
+    }
 }
