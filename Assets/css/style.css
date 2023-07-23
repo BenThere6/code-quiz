@@ -38,7 +38,7 @@ ul {
 }
 
 li {
-    padding: 3px 15px 3px 15px;
+    padding: 3px 15px 3px 12px;
 }
 
 li:nth-child(odd) {
@@ -50,5 +50,9 @@ li:nth-child(odd) {
     .screens {
         margin-left:3%;
         margin-right:3%;
+    }
+
+    #scores_screen {
+        margin-top:0px;
     }
 }
