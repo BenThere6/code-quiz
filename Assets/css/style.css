@@ -68,3 +68,9 @@ li:nth-child(odd) {
         margin-top:0px;
     }
 }
+
+@media screen and (max-width: 992px) {
+    .btn {
+        padding:10px;
+    }
+}
