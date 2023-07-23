@@ -24,3 +24,10 @@
 #view_scores:hover {
     cursor:grab;
 }
+
+header {
+    display:flex;
+    justify-content: space-between;
+    font-weight:bolder;
+    color:var(--purple);
+}

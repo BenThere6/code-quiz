@@ -94,6 +94,7 @@ optionFourBtn.addEventListener('click',function() {
 backBtn.addEventListener('click',function() {
     questionNum = 0;
     points = 0;
+    timerCount.textContent = timeLeftMain;
     renderQuestionAndOptions();
     renderScore();
     showMainScreen();
@@ -196,7 +197,7 @@ function showMainScreen() {
     questionScreen.style.display = "none";
     quizEndScreen.style.display = "none";
     scoresScreen.style.display = "none";
-    viewScores.style.display = "block";
+    viewScores.style.color = "var(--purple)";
     timeDiv.style.display = "block";
 }
 
@@ -205,7 +206,7 @@ function showQuestionScreen() {
     questionScreen.style.display = "block";
     quizEndScreen.style.display = "none";
     scoresScreen.style.display = "none";
-    viewScores.style.display = "none";
+    viewScores.style.color = "white";
     timeDiv.style.display = "block";
 }
 
@@ -214,7 +215,7 @@ function showQuizEndScreen() {
     questionScreen.style.display = "none";
     quizEndScreen.style.display = "block";
     scoresScreen.style.display = "none";
-    viewScores.style.display = "block";
+    viewScores.style.color = "var(--purple)";
     timeDiv.style.display = "none";
 }
 
@@ -223,7 +224,7 @@ function showScoresScreen() {
     questionScreen.style.display = "none";
     quizEndScreen.style.display = "none";
     scoresScreen.style.display = "block";
-    viewScores.style.display = "none";
+    viewScores.style.color = "white";
     timeDiv.style.display = "none";
 }
 
