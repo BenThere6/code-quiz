@@ -155,13 +155,8 @@ function displayMessage() {
     rightOrWrongEl.style.display = 'block';
     rightOrWrongEl.textContent = message;
     messageTimeout = setTimeout(() => {
-        hideMessage();
+        rightOrWrongEl.style.display = 'none';
     }, 2000);
-}
-
-// Hide message after 3 seconds
-function hideMessage() {
-    rightOrWrongEl.style.display = 'none';
 }
 
 // Display question and options based on questionNum
@@ -188,7 +183,7 @@ function renderScore() {
 
 // If quiz is complete, show quiz end screen 
 function checkQuizComplete() {
-    if (questionNum == 5 || timeLeft == 0) {
+    if (questionNum == 5 || timeLeft <= 0) {
         // setTimeout(() => {
             showQuizEndScreen();
             isQuizComplete = true;
