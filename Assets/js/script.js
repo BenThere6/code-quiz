@@ -197,7 +197,7 @@ function showMainScreen() {
     quizEndScreen.style.display = "none";
     scoresScreen.style.display = "none";
     viewScores.style.display = "block";
-    timeDiv.style.display = "none";
+    timeDiv.style.display = "block";
 }
 
 function showQuestionScreen() {
