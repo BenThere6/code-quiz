@@ -111,17 +111,17 @@ viewScores.addEventListener('click',function() {
         showScoresScreen();
     }
     catch {
-        alert('No scores to display.')
+        alert('No scores to display')
     }
 });
 
 $('#save_score').submit(function(e){
+    showScoresScreen();
     initials = document.querySelector('#initials').value.toUpperCase();
     document.getElementById('initials').value = "";
     e.preventDefault();
     saveScore();
     renderScoreList();
-    showScoresScreen();
 });
 
 function renderQuestionAndOptions() {
