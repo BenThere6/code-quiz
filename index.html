@@ -32,9 +32,9 @@
     <section id="quiz_end_screen" class="screens">
         <h2>All done!</h2>
         <div>Your final score is <span id="final_score"></span>.</div>
-        <form id="save_score">
+        <form id="save_score" autocomplete="off">
             <label for="initials">Enter initials:</label>
-            <input type="text" id="initials" name="initials">
+            <input type="text" id="initials" name="initials" required>
             <input type="submit" value="Submit" class="btn">
         </form>
     </section>
