@@ -34,6 +34,7 @@ startQuizBtn.addEventListener('click',function() {
     startQuizBtn.disabled = true;
     timerUpdate();
     renderQuestionAndOptions();
+    showQuestionScreen();
 });
 
 optionOneBtn.addEventListener('click',function() {
@@ -89,7 +90,7 @@ backBtn.addEventListener('click',function() {
     points = 0;
     renderQuestionAndOptions();
     renderScore();
-    // timerUpdate();
+    showMainScreen();
 });
 
 clearScoresBtn.addEventListener('click',function() {
@@ -99,6 +100,7 @@ clearScoresBtn.addEventListener('click',function() {
 
 viewScores.addEventListener('click',function() {
     renderScoreList();
+    showScoresScreen();
 });
 
 $('#save_score').submit(function(e){
@@ -107,6 +109,7 @@ $('#save_score').submit(function(e){
     e.preventDefault();
     saveScore();
     renderScoreList();
+    showScoresScreen();
 });
 
 function renderQuestionAndOptions() {
@@ -129,22 +132,19 @@ function checkQuizComplete() {
         isQuizComplete = true;
         startQuizBtn.disabled = false;
         timeLeft = 0;
+        showQuizEndScreen();
     }
 }
 
 function timerUpdate() {
-    // var timeLeft = 10;
     var timerInterval = setInterval(function() {
-        
-        timerCount.textContent = timeLeft;
         timeLeft--;
-    
+        timerCount.textContent = timeLeft;
         if(timeLeft < 1) {
             timerCount.textContent = "";
             clearInterval(timerInterval);
             checkQuizComplete();
         }
-    
     }, 1000);
 }
 
@@ -173,6 +173,44 @@ function renderScoreList() {
         splitScoreItem = scoresList[i].split(',');
         initials = splitScoreItem[0];
         points = splitScoreItem[1];
-        $('#scores_list').append('<li>' + initials + ' - ' + points + '<li>');
+        $('#scores_list').append('<li>' + initials + ' - ' + points + '</li>');
     }
 }
+
+function init() {
+    showMainScreen();
+}
+
+function showMainScreen() {
+    mainScreen.style.display = "block";
+    questionScreen.style.display = "none";
+    quizEndScreen.style.display = "none";
+    scoresScreen.style.display = "none";
+    viewScores.style.display = "block";
+}
+
+function showQuestionScreen() {
+    mainScreen.style.display = "none";
+    questionScreen.style.display = "block";
+    quizEndScreen.style.display = "none";
+    scoresScreen.style.display = "none";
+    viewScores.style.display = "none";
+}
+
+function showQuizEndScreen() {
+    mainScreen.style.display = "none";
+    questionScreen.style.display = "none";
+    quizEndScreen.style.display = "block";
+    scoresScreen.style.display = "none";
+    viewScores.style.display = "block";
+}
+
+function showScoresScreen() {
+    mainScreen.style.display = "none";
+    questionScreen.style.display = "none";
+    quizEndScreen.style.display = "none";
+    scoresScreen.style.display = "block";
+    viewScores.style.display = "none";
+}
+
+init();
