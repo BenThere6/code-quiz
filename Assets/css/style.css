@@ -1,0 +1,26 @@
+:root {
+    --purple: rgb(74, 52, 109);
+}
+
+.screens {
+    margin-left: 25%;
+    margin-right: 25%;
+    /* width:50%; */
+    margin-top: 50px;
+    /* text-align: center; */
+}
+
+#main_screen {
+    text-align: center;
+}
+
+.btn {
+    background-color: var(--purple);
+    color:white;
+    border-radius: 7px;
+    margin-top:5px
+}
+
+#view_scores:hover {
+    cursor:grab;
+}
