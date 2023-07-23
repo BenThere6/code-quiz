@@ -131,7 +131,12 @@ function renderQuestionAndOptions() {
         optionThreeEl.textContent = optionsArray[questionNum][2];
         optionFourEl.textContent = optionsArray[questionNum][3];
     }
-    checkQuizComplete();
+    try {
+        checkQuizComplete();
+    }
+    catch {
+        console.log("Skipping quiz-complete check");
+    }
 }
 
 function renderScore() {
