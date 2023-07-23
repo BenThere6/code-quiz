@@ -1,6 +1,7 @@
 :root {
     --purple: rgb(74, 52, 109);
     --lightPurple: rgb(191, 173, 222);
+    --gray:rgb(181, 179, 179);
 }
 
 .screens {
@@ -18,6 +19,16 @@
     color:white;
     border-radius: 7px;
     margin-top:5px
+}
+
+#right_or_wrong {
+    display: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    color: var(--gray);
+    border-top: 1px solid var(--gray);
+    font-style: italic;
 }
 
 #view_scores:hover {

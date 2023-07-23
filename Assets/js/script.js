@@ -13,7 +13,7 @@ var optionOneBtn = document.getElementById("option_one_btn");
 var optionTwoBtn = document.getElementById("option_two_btn");
 var optionThreeBtn = document.getElementById("option_three_btn");
 var optionFourBtn = document.getElementById("option_four_btn");
-var rightOrWrongEl = document.getElementById("view_scores");
+var rightOrWrongEl = document.getElementById("right_or_wrong");
 var quizEndScreen = document.getElementById("quiz_end_screen");
 var finalScoreEl = document.getElementById("final_score");
 var scoresScreen = document.getElementById("scores_screen");
@@ -27,6 +27,7 @@ var questionNum = 0;
 var points = 0;
 var isQuizComplete = false;
 var timeLeftMain = 60;
+var message;
 
 finalScoreEl.textContent = points;
 timerCount.textContent = timeLeftMain;
@@ -44,52 +45,64 @@ startQuizBtn.addEventListener('click',function() {
 optionOneBtn.addEventListener('click',function() {
     if (optionOneEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
+        message = 'Correct!';
         points += 20;
     } else {
         console.log("wrong answer");
+        message = 'Wrong!';
         timeLeft -= 10;
     }
     questionNum++;
     renderQuestionAndOptions();
+    displayMessage();
     renderScore();
 });
 
 optionTwoBtn.addEventListener('click',function() {
     if (optionTwoEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
+        message = 'Correct!';
         points += 20;
     } else {
         console.log("wrong answer");
+        message = 'Wrong!';
         timeLeft -= 10;
     }
     questionNum++;
     renderQuestionAndOptions();
+    displayMessage();
     renderScore();
 });
 
 optionThreeBtn.addEventListener('click',function() {
     if (optionThreeEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
+        message = 'Correct!';
         points += 20;
     } else {
         console.log("wrong answer");
+        message = 'Wrong!';
         timeLeft -= 10;
     }
     questionNum++;
     renderQuestionAndOptions();
+    displayMessage();
     renderScore();
 });
 
 optionFourBtn.addEventListener('click',function() {
     if (optionFourEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
+        message = 'Correct!';
         points += 20;
     } else {
         console.log("wrong answer");
+        message = 'Wrong!';
         timeLeft -= 10;
     }
     questionNum++;
     renderQuestionAndOptions();
+    displayMessage();
     renderScore();
 });
 
@@ -130,6 +143,27 @@ $('#save_score').submit(function(e){
     renderScoreList();
 });
 
+// Display right or wrong message after each question
+function displayMessage() {
+    // If there is a message timer going, clear it first
+    try {
+        clearTimeout(messageTimeout);
+    }
+    catch {
+        console.log("No message timer yet");
+    }
+    rightOrWrongEl.style.display = 'block';
+    rightOrWrongEl.textContent = message;
+    messageTimeout = setTimeout(() => {
+        hideMessage();
+    }, 2000);
+}
+
+// Hide message after 3 seconds
+function hideMessage() {
+    rightOrWrongEl.style.display = 'none';
+}
+
 // Display question and options based on questionNum
 function renderQuestionAndOptions() {
     if (questionNum < 5) {
@@ -155,9 +189,11 @@ function renderScore() {
 // If quiz is complete, show quiz end screen 
 function checkQuizComplete() {
     if (questionNum == 5 || timeLeft == 0) {
-        isQuizComplete = true;
-        timeLeft = 0;
-        showQuizEndScreen();
+        // setTimeout(() => {
+            showQuizEndScreen();
+            isQuizComplete = true;
+            timeLeft = 0;
+        // }, 2000);
     }
 }
 
