@@ -13,6 +13,7 @@ var optionOneBtn = document.getElementById("option_one_btn");
 var optionTwoBtn = document.getElementById("option_two_btn");
 var optionThreeBtn = document.getElementById("option_three_btn");
 var optionFourBtn = document.getElementById("option_four_btn");
+var quitBtn = document.getElementById("quit_btn");
 var rightOrWrongEl = document.getElementById("view_scores");
 var quizEndScreen = document.getElementById("quiz_end_screen");
 var finalScoreEl = document.getElementById("final_score");
@@ -33,7 +34,8 @@ timerCount.textContent = timeLeftMain;
 
 startQuizBtn.addEventListener('click',function() {
     timeLeft = timeLeftMain;
-    startQuizBtn.disabled = true;
+    // startQuizBtn.disabled = true;
+    isQuizComplete = false;
     timerUpdate();
     renderQuestionAndOptions();
     showQuestionScreen();
@@ -87,6 +89,13 @@ optionFourBtn.addEventListener('click',function() {
     renderScore();
 });
 
+quitBtn.addEventListener('click',function() {
+    points = 0;
+    timerCount = timeLeftMain;
+    isQuizComplete = true;
+    showMainScreen();
+});
+
 backBtn.addEventListener('click',function() {
     questionNum = 0;
     points = 0;
@@ -132,7 +141,7 @@ function renderScore() {
 function checkQuizComplete() {
     if (questionNum == 5 || timeLeft == 0) {
         isQuizComplete = true;
-        startQuizBtn.disabled = false;
+        // startQuizBtn.disabled = false;
         timeLeft = 0;
         showQuizEndScreen();
     }
