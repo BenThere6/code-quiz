@@ -1,5 +1,6 @@
 var viewScores = document.getElementById("view_scores");
 var timerCount = document.getElementById("timer_count");
+var timeDiv = document.getElementById("time_div");
 var mainScreen = document.getElementById("main_screen");
 var startQuizBtn = document.getElementById("start_quiz");
 var questionScreen = document.getElementById("question_screen");
@@ -25,12 +26,13 @@ var correctAnswers = ['alerts','parenthesis','all of the above','quotes','consol
 var questionNum = 0;
 var points = 0;
 var isQuizComplete = false;
-var timeLeft = 10;
+var timeLeftMain = 60;
 
 finalScoreEl.textContent = points;
+timerCount.textContent = timeLeftMain;
 
 startQuizBtn.addEventListener('click',function() {
-    timeLeft = 10;
+    timeLeft = timeLeftMain;
     startQuizBtn.disabled = true;
     timerUpdate();
     renderQuestionAndOptions();
@@ -187,6 +189,7 @@ function showMainScreen() {
     quizEndScreen.style.display = "none";
     scoresScreen.style.display = "none";
     viewScores.style.display = "block";
+    timeDiv.style.display = "none";
 }
 
 function showQuestionScreen() {
@@ -195,6 +198,7 @@ function showQuestionScreen() {
     quizEndScreen.style.display = "none";
     scoresScreen.style.display = "none";
     viewScores.style.display = "none";
+    timeDiv.style.display = "block";
 }
 
 function showQuizEndScreen() {
@@ -203,6 +207,7 @@ function showQuizEndScreen() {
     quizEndScreen.style.display = "block";
     scoresScreen.style.display = "none";
     viewScores.style.display = "block";
+    timeDiv.style.display = "none";
 }
 
 function showScoresScreen() {
@@ -211,6 +216,7 @@ function showScoresScreen() {
     quizEndScreen.style.display = "none";
     scoresScreen.style.display = "block";
     viewScores.style.display = "none";
+    timeDiv.style.display = "none";
 }
 
 init();
