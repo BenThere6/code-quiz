@@ -32,7 +32,7 @@ var message;
 finalScoreEl.textContent = points;
 timerCount.textContent = timeLeftMain;
 
-// When this button is clicked, start the timer and change to questions screen
+// When this button is clicked, start timer and change to questions screen
 startQuizBtn.addEventListener('click',function() {
     timeLeft = timeLeftMain;
     isQuizComplete = false;
@@ -44,11 +44,9 @@ startQuizBtn.addEventListener('click',function() {
 // When any of the option buttons are clicked, render the new question and options
 optionOneBtn.addEventListener('click',function() {
     if (optionOneEl.textContent === correctAnswers[questionNum]) {
-        console.log("correct answer");
         message = 'Correct!';
         points += 5;
     } else {
-        console.log("wrong answer");
         message = 'Wrong!';
         timeLeft -= 10;
     }
@@ -60,11 +58,9 @@ optionOneBtn.addEventListener('click',function() {
 
 optionTwoBtn.addEventListener('click',function() {
     if (optionTwoEl.textContent === correctAnswers[questionNum]) {
-        console.log("correct answer");
         message = 'Correct!';
         points += 5;
     } else {
-        console.log("wrong answer");
         message = 'Wrong!';
         timeLeft -= 10;
     }
@@ -76,11 +72,9 @@ optionTwoBtn.addEventListener('click',function() {
 
 optionThreeBtn.addEventListener('click',function() {
     if (optionThreeEl.textContent === correctAnswers[questionNum]) {
-        console.log("correct answer");
         message = 'Correct!';
         points += 5;
     } else {
-        console.log("wrong answer");
         message = 'Wrong!';
         timeLeft -= 10;
     }
@@ -92,11 +86,9 @@ optionThreeBtn.addEventListener('click',function() {
 
 optionFourBtn.addEventListener('click',function() {
     if (optionFourEl.textContent === correctAnswers[questionNum]) {
-        console.log("correct answer");
         message = 'Correct!';
         points += 5;
     } else {
-        console.log("wrong answer");
         message = 'Wrong!';
         timeLeft -= 10;
     }
@@ -186,7 +178,8 @@ function checkQuizComplete() {
     if (questionNum == 5 || timeLeft <= 0) {
         showQuizEndScreen();
         isQuizComplete = true;
-        if (points > 5) {
+        // If any questions were answered correctly, add timeLeft to points
+        if (points > 4) {
             points += timeLeft + 1;
         } else {
             points = 0;
