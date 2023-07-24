@@ -29,7 +29,6 @@ var isQuizComplete = false;
 var timeLeftMain = 60;
 var message;
 
-finalScoreEl.textContent = points;
 timerCount.textContent = timeLeftMain;
 
 // When this button is clicked, start timer and change to questions screen
