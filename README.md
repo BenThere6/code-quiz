@@ -4,6 +4,10 @@
 
 This quiz showcases your JavaScript knowledge campared to your peers. You are given a time limit of 60 seconds, with each wrong answer there is a time penalty of 10 seconds. At the end you can save your score with your initials. All scores saved in local storage are displayed in descending order on the final screen. 
 
+## Screenshot
+
+![Screenshot of quiz](./Assets/images/Screenshot%202023-07-24%20at%201.36.34%20AM.png)
+
 ## User Story
 
 ```
