@@ -59,7 +59,7 @@ li:nth-child(odd) {
 }
 
 @media screen and (max-width: 992px) {
-    .btn {
+    button {
         padding:10px;
     }
 

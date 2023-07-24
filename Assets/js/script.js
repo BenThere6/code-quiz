@@ -46,7 +46,7 @@ optionOneBtn.addEventListener('click',function() {
     if (optionOneEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
         message = 'Correct!';
-        points += 20;
+        points += 5;
     } else {
         console.log("wrong answer");
         message = 'Wrong!';
@@ -62,7 +62,7 @@ optionTwoBtn.addEventListener('click',function() {
     if (optionTwoEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
         message = 'Correct!';
-        points += 20;
+        points += 5;
     } else {
         console.log("wrong answer");
         message = 'Wrong!';
@@ -78,7 +78,7 @@ optionThreeBtn.addEventListener('click',function() {
     if (optionThreeEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
         message = 'Correct!';
-        points += 20;
+        points += 5;
     } else {
         console.log("wrong answer");
         message = 'Wrong!';
@@ -94,7 +94,7 @@ optionFourBtn.addEventListener('click',function() {
     if (optionFourEl.textContent === correctAnswers[questionNum]) {
         console.log("correct answer");
         message = 'Correct!';
-        points += 20;
+        points += 5;
     } else {
         console.log("wrong answer");
         message = 'Wrong!';
@@ -184,11 +184,14 @@ function renderScore() {
 // If quiz is complete, show quiz end screen 
 function checkQuizComplete() {
     if (questionNum == 5 || timeLeft <= 0) {
-        // setTimeout(() => {
-            showQuizEndScreen();
-            isQuizComplete = true;
-            timeLeft = 0;
-        // }, 2000);
+        showQuizEndScreen();
+        isQuizComplete = true;
+        if (points > 5) {
+            points += timeLeft + 1;
+        } else {
+            points = 0;
+        }
+        timeLeft = 0;
     }
 }
 
@@ -207,14 +210,36 @@ function timerUpdate() {
 
 // Save initials and points to local storage as JSON list
 function saveScore() {
-    currentScore = [initials + ',' + points];
+    currentScore = [[initials,points]];
     const scores = (localStorage.getItem('scores') !== null);
     if (!scores) {
         localStorage.setItem("scores", JSON.stringify(currentScore));
     } else {
-        scoresList = JSON.parse(localStorage.getItem("scores"));
-        scoresList.push(currentScore[0]);
-        localStorage.setItem("scores", JSON.stringify(scoresList));
+        // Sort list in descending order
+        var sortedScoresList = [];
+        var pointsList = [];
+        // Pull list from local storage and add current score
+        unsortedScoresList = JSON.parse(localStorage.getItem("scores"));
+        unsortedScoresList.push(currentScore[0]);
+        // Add points to separate list
+        for (i=0;i<unsortedScoresList.length;i++) {
+            point = unsortedScoresList[i][1];
+            if (!pointsList.includes(point)) {
+                pointsList.push(point);
+            };
+        }
+        // Sort points list in descending order
+        pointsList = pointsList.sort().reverse();
+        // Loop through pointsList and unsortedScoresList. Append unsorted item to sorted list if it matches pointsList[i].
+        for (i=0;i<pointsList.length;i++){
+            for (j=0;j<unsortedScoresList.length;j++) {
+                if (unsortedScoresList[j][1] == pointsList[i]){
+                    sortedScoresList.push(unsortedScoresList[j]);
+                }
+            }
+        }
+        // Save sorted list to local storage in JSON format
+        localStorage.setItem("scores", JSON.stringify(sortedScoresList));
     }
 }
 
@@ -224,10 +249,9 @@ function renderScoreList() {
     scoresList = JSON.parse(localStorage.getItem("scores"));
 
     for (i=0;i<scoresList.length;i++) {
-        splitScoreItem = scoresList[i].split(',');
-        initials = splitScoreItem[0];
-        points = splitScoreItem[1];
-        $('#scores_list').append('<li>' + initials + ' - ' + points + '</li>');
+        initials = scoresList[i][0];
+        points = scoresList[i][1];
+        $('#scores_list').append('<li>' + points + ' - ' + initials + '</li>');
     }
 }
 
