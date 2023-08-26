@@ -1,43 +1,41 @@
-# Code Quiz
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+# JavaScript Quiz 
+  
 ## Description
+  
+Embark on an immersive journey with this JavaScript quiz that not only measures your knowledge but also puts your quick thinking under pressure. The experience unfolds over a series of thought-provoking questions, guided by a ticking clock that sets a 60-second limit. Each incorrect response comes with a time penalty of 10 seconds, intensifying the challenge and testing your agility.<br><br>Upon completion, the chance to etch your name among high scorers awaits. Record your initials alongside your achievement, and witness these esteemed scores take their place in local storage. The final screen elegantly presents these scores in descending order, celebrating the accomplishments of those who dare to play.<br><br>This quiz is your arena to assess JavaScript prowess, master decision-making under duress, and secure your spot among the quiz elite. It's not just a challenge; it's a platform to showcase your expertise.<br><br>Prepare to embrace the challenge, embrace the thrill, and claim your well-deserved victory.
 
-This quiz showcases your JavaScript knowledge campared to your peers. You are given a time limit of 60 seconds, with each wrong answer there is a time penalty of 10 seconds. At the end you can save your score with your initials. All scores saved in local storage are displayed in descending order on the final screen. 
+## Table of Contents
 
-## Screenshot
+* [Project Information](#project-information)<br>
+* [Usage](#usage)<br>
+* [Contact Information](#contact-information)<br>
+* [Credits](#credits)<br>
+* [License](#license)
 
-![Screenshot of quiz](./Assets/images/Screenshot%202023-07-24%20at%201.36.34%20AM.png)
+## Project Information
 
-## User Story
+This project is developed as part of a school assignment for Rutgers University. The code and documentation are created solely by BenThere6. While external contributions are not expected, this repository serves as a demonstration of my understanding of the concepts covered in the course.
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## Usage
 
-## Acceptance Criteria
+To engage with this captivating JavaScript quiz, simply follow these steps:<br><br>1. **Initiate the Challenge:** Click the "Start" button to kick off the quiz adventure. As soon as you begin, the timer starts counting down from 60 seconds.<br>2. **Answer with Presicion:** Each question will appear one after the other. For each question, select your answer from the options provided. If you're unsure of an answer, don't worry—just keep moving forward.<br>3. **Watch the Timer:** Keep an eye on the timer as you proceed. Remember that every incorrect answer results in a 10-second time penalty. Make strategic choices to maximize your remaining time.<br>4. **Reach the Finish Line:** The quiz concludes when you've answered all the questions or when the timer reaches zero. At this point, your quiz journey comes to an end.<br>5. **Claim Your Spot:** After completing the quiz, you have the opportunity to save your score along with your initials. This is your chance to leave your mark among the top performers.<br>6. **Explore the LeaderBoard:** All scores saved from previous attempts are displayed on the final screen, showcasing the accomplishments of participants in descending order.<br><br>Are you ready to showcase your JavaScript expertise and quick decision-making skills? Embark on the quiz and strive for a top spot on the leaderboard!
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
+## Contact Information
 
-## Mock-Up
+For any further inquiries, please feel free to reach out to me through the following channels:
+* GitHub: [My GitHub Profile](https://www.github.com/BenThere6)
+* Email: benjaminbirdsall@icloud.com
 
-The following animation demonstrates the application functionality, provided by Rutgers Coding Bootcamp:
+I am here to assist you with any questions or feedback you may have. Thank you for your interest!
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/images/04-web-apis-homework-demo.gif)
+## Credits
 
-## Credit
+The quiz's functionality is demonstrated in the animation below, graciously provided by Rutgers Coding Bootcamp:<br><br>![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/images/04-web-apis-homework-demo.gif)<br><br>All the code used in this quiz is original, although it draws inspiration from the mock-up showcased above.
 
-This quiz is based on the mock-up shown above, but all of the code is original. 
+## License 
+
+[MIT License](https://opensource.org/licenses/MIT)
+
+The MIT License is a permissive open-source license that allows others to use, modify, and distribute your code for both commercial and non-commercial purposes. It requires that the original license notice and copyright notice are included in any redistributions.
